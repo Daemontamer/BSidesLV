@@ -1,0 +1,31 @@
+
+version: '2'
+
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "8080:80"
+        volumes:
+            - .:/var/www/bsideslv
+    php:
+        image: php:fpm
+        volumes:
+            - .:/var/www/bsideslv
+        expose:
+            - "9000"
+        environment:
+            DB_HOST: db
+            DB_PORT: 3306
+            DB_DATABASE: bsideslv
+            DB_USERNAME: bsideslv
+            DB_PASSWORD: bsideslv
+    db:
+        image: mysql:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: T%A7h0QVObWEd8m759K9QEkho
+            MYSQL_DATABASE: bsideslv
+            MYSQL_USER: bsideslv
+            MYSQL_PASSWORD: bsideslv
+        ports:
+            - "3000:3306"
