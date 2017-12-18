@@ -1,0 +1,5 @@
+BSIDESLV main website
+
+Includes wordpress, theme, and required plugins.
+
+There is a docker based environment for dev/test and possibly prod use. To use it, install docker & run docker compose in this directory E.G. `docker-compose up`. With the container running, the website can be accessed at http://localhost:8080/
