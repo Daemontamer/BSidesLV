@@ -1,5 +1,7 @@
 FROM php:fpm
 
+ADD src/ /var/www/bsideslv
+
 RUN apt-get update;
 RUN apt-get install -y libjpeg-dev libpng-dev;
 RUN rm -rf /var/lib/apt/lists/*;
