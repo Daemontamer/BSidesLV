@@ -47,11 +47,11 @@ if( !function_exists('ventcamp_theme_register_required_plugins') ) {
             ),
 
             array(
-                'name'               => 'Visual Composer', // The plugin name.
+                'name'               => 'WPBakery Page Builder', // The plugin name.
                 'slug'               => 'js_composer', // The plugin slug (typically the folder name).
-                'source'             => 'http://vivaco.com/ext/js_composer_5.2.1.zip', // The plugin source.
+                'source'             => 'http://vivaco.com/ext/js_composer_5.4.5.zip', // The plugin source.
                 'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-                'version'            => '5.2', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+                'version'            => '5.4.5', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
                 'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
                 'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
                 'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -99,9 +99,9 @@ if( !function_exists('ventcamp_theme_register_required_plugins') ) {
             array(
                 'name'               => 'WooCommerce FooEvents',
                 'slug'               => 'fooevents',
-                'source'             => 'http://vivaco.com/ext/fooevents-1.5.15.zip',
+                'source'             => 'http://vivaco.com/ext/fooevents-1.7.1.zip',
                 'required'           => false,
-                'version'            => '1.5.15',
+                'version'            => '1.7.1',
                 'force_activation'   => false,
                 'force_deactivation' => false,
                 'external_url'       => '',

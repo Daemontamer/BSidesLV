@@ -281,34 +281,34 @@
             &.collapsed .title .icon {
                 &:extend(.base-clr-txt);
             }
+        }
 
-            .time {
-                margin-bottom: 10px;
-                font-size: @font-size-base;
+        .time {
+            margin-bottom: 10px;
+            font-size: @font-size-base;
 
-                .icon {
-                    margin-right: 8px;
-                    vertical-align: middle;
-                    color: @text-gray-light;
-                }
+            .icon {
+                margin-right: 8px;
+                vertical-align: middle;
+                color: @text-gray-light;
             }
+        }
 
-            .title {
-                position: relative;
-                margin: 0;
-                padding: 0 35px 11px 0;
-                border-bottom: 1px solid @gray-blue;
+        .title {
+            position: relative;
+            margin: 0;
+            padding: 0 35px 11px 0;
+            border-bottom: 1px solid @gray-blue;
 
-                .icon {
-                    position: absolute;
-                    right: 10px;
-                    bottom: 11px;
-                    font-size: @font-size-small;
-                    color: @text-gray;
-                    -webkit-transition: transform 0.3s ease;
-                    -o-transition: transform 0.3s ease;
-                    transition: transform 0.3s ease;
-                }
+            .icon {
+                position: absolute;
+                right: 10px;
+                bottom: 11px;
+                font-size: @font-size-small;
+                color: @text-gray;
+                -webkit-transition: transform 0.3s ease;
+                -o-transition: transform 0.3s ease;
+                transition: transform 0.3s ease;
             }
         }
 
@@ -336,8 +336,8 @@
         }
     }
 
-    &-simple {
-        &-date {
+    .schedule-simple {
+        .date {
             font-family: @typography_heading_font_family;
             font-weight: @typography_heading_font_weight;
             font-size: 30px;
@@ -346,7 +346,7 @@
             margin-bottom: 75px;
         }
 
-        &-item {
+        .item {
             margin-left: 80px;
             margin-right: 80px;
 
@@ -355,6 +355,11 @@
                 padding-bottom: 25px;
                 border-bottom: 2px solid @gray-blue;
                 margin-bottom: 45px;
+
+                header {
+                    display: block;
+                    overflow: hidden;
+                }
 
                 h4 {
                     color: @gray-darker;
@@ -369,7 +374,7 @@
             }
         }
 
-        &-location {
+        .location {
             display: inline-block;
             background: @skin_accent_color;
             color: #fff;
@@ -385,17 +390,13 @@
             margin-bottom: 15px;
         }
 
-        &-time {
+        .time {
             float: left;
             color: @text-gray;
             font-weight: 700;
-            margin-top: 7px;
 
             .icon {
                 margin-right: 8px;
-                vertical-align: middle;
-                position: relative;
-                top: 1px;
 
                 &:before {
                     color: #cecece;
@@ -403,7 +404,7 @@
             }
         }
 
-        &-extra-info {
+        .extra-info {
             float: right;
             margin-top: 8px;
             text-transform: uppercase;
@@ -411,6 +412,24 @@
             font-weight: 700;
             font-size: @font-size-small;
             color: @gray-light;
+        }
+
+        .speaker-icon {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            overflow: hidden;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 5px;
+
+            // Speaker icon
+            img {
+                width: 75px;
+                height: 75px;
+                border-radius: 50%;
+                margin: 0;
+            }
         }
     }
 }
@@ -522,36 +541,36 @@
             font-size: 0;
             text-decoration: none;
             color: @text-black;
+        }
 
-            .time {
-                vertical-align: top;
-                margin: 0 20.5% 0 0;
-                width: 26.5%;
-                text-align: right;
+        .time {
+            vertical-align: top;
+            margin: 0 20.5% 0 0;
+            width: 26.5%;
+            text-align: right;
+        }
+
+        .lecture-icon-wrapper {
+            &:extend(.base-clr-bg);
+
+            margin: 0 40px;
+            position: absolute;
+            top: -8px;
+            left: 26.5%;
+            display: inline-block;
+            line-height: 38px;
+            border: none;
+
+            * {
+                color: @text-white;
             }
+        }
 
-            .lecture-icon-wrapper {
-                &:extend(.base-clr-bg);
-
-                margin: 0 40px;
-                position: absolute;
-                top: -8px;
-                left: 26.5%;
-                display: inline-block;
-                line-height: 38px;
-                border: none;
-
-                * {
-                    color: @text-white;
-                }
-            }
-
-            .title {
-                display: inline-block;
-                width: 53%;
-                padding: 0;
-                border: none;
-            }
+        .title {
+            display: inline-block;
+            width: 53%;
+            padding: 0;
+            border: none;
         }
 
         .schedule-item-body {
@@ -579,11 +598,11 @@
         .tab-content-schedule {
             padding: 50px 30px;
         }
-    }
 
-    .schedule-simple-item {
-        margin-left: 0;
-        margin-right: 0;
+        .schedule-simple .item {
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 }
 
@@ -641,28 +660,26 @@
                 margin-bottom: 40px;
                 overflow: visible;
 
-                .schedule-item-toggle {
-                    .time {
-                        margin: 0 0 15px;
-                        width: 100%;
-                        text-align: left;
-                    }
+                .time {
+                    margin: 0 0 15px;
+                    width: 100%;
+                    text-align: left;
+                }
 
-                    .lecture-icon-wrapper {
-                        &:extend(.base-clr-bg);
+                .lecture-icon-wrapper {
+                    &:extend(.base-clr-bg);
 
-                        position: absolute;
-                        top: 30px;
-                        left: 0;
-                        margin: 0;
-                    }
+                    position: absolute;
+                    top: 30px;
+                    left: 0;
+                    margin: 0;
+                }
 
-                    .title {
-                        margin: 0 0 20px;
-                        vertical-align: top;
-                        width: auto;
-                        padding-left: 50px;
-                    }
+                .title {
+                    margin: 0 0 20px;
+                    vertical-align: top;
+                    width: auto;
+                    padding-left: 50px;
                 }
 
                 .schedule-item-body {
@@ -671,31 +688,47 @@
             }
         }
 
-        &-simple {
-            &-date {
+        .schedule-simple {
+            .date {
                 margin-left: 0;
                 margin-bottom: 40px;
                 text-align: center;
             }
 
-            &-time {
+            .time {
                 float: none;
                 margin-bottom: 8px;
             }
 
-            article {
-                margin-left: 0;
-            }
-
-            &-item article {
+            .item article {
                 padding-bottom: 15px;
                 margin-bottom: 35px;
+                margin-left: 0;
+
+                // Turn header into table
+                header {
+                    display: table;
+                    margin-bottom: 10px;
+
+                    // Show speaker icon and info as cell
+                    .speaker-icon,
+                    .info {
+                        display: table-cell;
+                        vertical-align: top;
+                    }
+
+                    // Remove float
+                    .speaker-icon {
+                        float: none;
+                        margin: 0;
+                        padding: 0 10px 10px 0;
+                    }
+                }
             }
 
-            &-extra-info {
+            .extra-info {
                 float: none;
                 margin-top: -4px;
-                margin-bottom: 10px;
             }
         }
     }
@@ -719,11 +752,9 @@
                     line-height: 28px;
                 }
 
-                .schedule-item-toggle {
-                    .time,
-                    .title {
-                        margin-left: 40px;
-                    }
+                .time,
+                .title {
+                    margin-left: 40px;
                 }
             }
 
@@ -738,7 +769,7 @@
                 padding: 10px 5px 20px;
             }
 
-            .schedule-item .schedule-item-toggle {
+            .schedule-item {
                 .lecture-icon-wrapper {
                     top: 12px;
                     width: 30px;
@@ -770,10 +801,10 @@
     display:block !important;
 } 
 
-.schedule.remove_arrows .schedule-item .schedule-item-toggle .title {
+.schedule.remove_arrows .schedule-item .title {
     border-bottom:0; 
 } 
 
-.schedule.remove_arrows .schedule-item .schedule-item-toggle .title .icon {
+.schedule.remove_arrows .schedule-item .title .icon {
     display:none;
 } 

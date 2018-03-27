@@ -25,8 +25,7 @@ if ( !function_exists('ventcamp_page_wrapper_start') ) {
         } ?>
 
         <div class="<?php printf( $container ); ?>">
-	        <div class="content">
-		        <main role='main'>
+	        <div class="content" role="main">
         <?php
     }
 }
@@ -37,7 +36,6 @@ if ( !function_exists('ventcamp_page_wrapper_end') ) {
      */
     function ventcamp_page_wrapper_end() {
         ?>
-		        </main>
 		    </div>
         </div>
         <?php
@@ -295,6 +293,39 @@ if( !function_exists('ventcamp_check_image_libraries') ) {
     }
 
     add_action( 'admin_menu', 'ventcamp_check_image_libraries');
+}
+
+if( !function_exists('ventcamp_check_memory') ) {
+	/**
+	 * For proper theme functioning, Ventcamp require at least 80mb of memory.
+	 */
+	function ventcamp_check_memory() {
+        // Get memory limit
+		$memory_limit = ini_get( 'memory_limit' );
+		// Parse memory_limit string
+		if ( preg_match('/^(\d+)(.)$/', $memory_limit, $matches ) ) {
+		    // Check if memory is in megabytes or in kilobytes and convert accordingly
+			if ( $matches[2] == 'M' ) {
+				$memory_limit = $matches[1] * 1024 * 1024; // nnnM -> nnn MB
+			} else if ( $matches[2] == 'K' ) {
+				$memory_limit = $matches[1] * 1024; // nnnK -> nnn KB
+			}
+		}
+
+		// At least 80M?
+		$ok = ( $memory_limit >= 80 * 1024 * 1024 );
+        // If there is not enough memory
+        if ( !$ok ) {
+            add_settings_error(
+                'ventcamp-notices', // slug title of the setting
+                'error_not_enough_memory', // suffix-id for the error message box
+                __( 'Not enough memory on hosting, need at least 80mb of memory (optimal 128mb), otherwise theme options will not work.', 'ventcamp' ), // the error message
+                'error' // error type, either 'error' or 'updated'
+            );
+        }
+	}
+
+	add_action( 'admin_menu', 'ventcamp_check_memory');
 }
 
 if( !function_exists('ventcamp_change_default_template') ) {

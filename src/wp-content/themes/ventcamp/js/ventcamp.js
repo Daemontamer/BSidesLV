@@ -681,7 +681,7 @@ Ventcamp = {
             return false;
         }
 
-        offsetTop = $(anchorId).offset().top - $('.main-nav').height();
+        offsetTop = $(anchorId).offset().top - $('.main-nav .navigation-header').height();
 
         $('body, html').animate({
             scrollTop: offsetTop
@@ -797,11 +797,14 @@ Ventcamp = {
         });
 
         $('.navbar-collapse .menu-item-has-children > a').on('click', function (event) {
-            event.preventDefault();
+            // Behave as dropdown on mobile devices
+            if ( _this.mobileDevice ) {
+	    	    event.preventDefault();
 
-            var $subMenu = $(this).siblings('.sub-menu');
+	    	    var $subMenu = $(this).siblings('.sub-menu');
 
-            if ( $subMenu.length ) $subMenu.toggle();
+	    	    if ( $subMenu.length ) $subMenu.toggle();
+            }
         });
 
         $('.navbar-collapse').on( 'mousewheel DOMMouseScroll', function (event) {

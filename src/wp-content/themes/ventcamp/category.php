@@ -6,9 +6,10 @@ Blog Category page template
 get_header();
 
 ?>
-	<div class="container">
-		<div class="content col-md-9 col-sm-12">
-			<main role='main'>
+
+<div class="container">
+    <div class="row">
+		<div class="content col-md-8 col-sm-12" role="main">
 
 				<?php if ( have_posts() ) : ?>
 
@@ -42,14 +43,13 @@ get_header();
 
 				endif; ?>
 
-			</main>
 		</div>
 
-		<div class="col-md-3 col-sm-12 sidebar-right">
+		<div class="col-md-offset-1 col-md-3 col-sm-12 sidebar">
 			<?php get_sidebar(); ?>
 		</div>
-
-	</div>
+    </div>
+</div>
 
 <?php
 // get_sidebar();

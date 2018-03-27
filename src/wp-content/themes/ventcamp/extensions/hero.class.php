@@ -4,7 +4,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 // Require core Tags class
-require_once THEME_DIR . "/extensions/core/tag_generator.class.php";
+require_once get_template_directory() . "/extensions/core/tag_generator.class.php";
 
 // Require Video_Background class
 require_once "video-background.class.php";
@@ -85,6 +85,8 @@ if ( !class_exists( 'Hero' ) ) :
             $mute = in_array( 'mute', $settings ) ? true : false;
             // Set autoplay settings if needed
             $autoplay = in_array( 'autoplay', $settings ) ? true : false;
+	        // Display video in loop?
+	        $loop = in_array( 'loop', $settings ) ? true : false;
             // Disable controls by default
             $controls = 'none';
             // Only if controls are enabled
@@ -98,7 +100,8 @@ if ( !class_exists( 'Hero' ) ) :
                 "url"         => ventcamp_option( 'hero_background_video', '' ),
                 "controls"    => $controls,
                 "mute"        => $mute,
-                "autoplay"    => $autoplay
+                "autoplay"    => $autoplay,
+                "loop"        => $loop
             );
 
             // Init our video background class
@@ -140,7 +143,7 @@ if ( !class_exists( 'Hero' ) ) :
             $date     = apply_filters( 'the_title', ventcamp_option( 'hero_heading_upper_text_date', '28.NOV' ) );
             $location = apply_filters( 'the_title', ventcamp_option( 'hero_heading_upper_text_location', 'NEW YORK, NY' ) );
             ?>
-            <span class="hero-heading-top">
+            <div class="hero-heading-top">
                 <?php if ( !empty( $date ) ) : ?>
                     <span class="fa fa-calendar-o base-clr-txt"></span>
                     <?php esc_attr_e( $date ); ?>
@@ -150,7 +153,7 @@ if ( !class_exists( 'Hero' ) ) :
                     <span class="fa fa-map-marker base-clr-txt" style="margin-left: 14px;"></span>
                     <?php esc_attr_e( $location ); ?>
                 <?php endif; ?>
-            </span>
+            </div>
             <?php
         }
 
@@ -209,7 +212,7 @@ if ( !class_exists( 'Hero' ) ) :
                         </li>
                     <?php endforeach; ?>
                 </ul>
-            <!-- end of socials -->
+                <!-- end of socials -->
             <?php endif;
         }
 
@@ -240,9 +243,9 @@ if ( !class_exists( 'Hero' ) ) :
 
             // Only if subheading is set
             if ( !empty( $subheading ) ) : ?>
-                <span class="hero-heading-bottom">
+                <div class="hero-heading-bottom">
                     <?php echo esc_html( $subheading ); ?>
-                </span>
+                </div>
             <?php endif;
         }
     }

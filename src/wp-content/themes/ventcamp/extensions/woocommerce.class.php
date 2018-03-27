@@ -61,11 +61,11 @@ if ( !class_exists( 'Woocommerce_Support' ) && class_exists( 'Woocommerce' ) ) :
          */
         public function output_content_wrapper () {
             // Set offset class if need
-            $col = $this->has_sidebar ? 'col-md-9 col-sm-12' : 'col-md-8 col-md-offset-2'; ?>
+            $col = $this->has_sidebar ? 'col-md-8 col-sm-12' : 'col-md-12'; ?>
 
             <div class="container">
                 <div class="content <?php echo $col; ?>">
-                    <main id="main" class="site-main" role="main">
+                    <main id="main" class="site-main">
             <?php
         }
 
@@ -90,7 +90,7 @@ if ( !class_exists( 'Woocommerce_Support' ) && class_exists( 'Woocommerce' ) ) :
                 // Remove default sidebar
                 remove_all_actions( 'woocommerce_sidebar', 10 ); ?>
 
-                <div class="col-md-3 col-sm-12 sidebar-right">
+                <div class="col-md-offset-1 col-md-3 col-sm-12 sidebar">
                     <?php get_sidebar(); ?>
                 </div>
 

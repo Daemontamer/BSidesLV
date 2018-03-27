@@ -1,13 +1,13 @@
 <?php
 
 // Require hero style 1 class
-require_once THEME_DIR . "/extensions/hero/style-3.class.php";
+require_once get_template_directory() . "/extensions/hero/style-3.class.php";
 
 // Init an object of Hero class
 $hero = new Hero_Style_3();
 ?>
 
-<section id="hero-3" <?php echo $hero->get_section_attr( 'light-text' ); ?>>
+<section id="hero" <?php echo $hero->get_section_attr( 'hero-style-3 light-text' ); ?>>
     <?php
         $hero->overlay();
         $hero->top_line();

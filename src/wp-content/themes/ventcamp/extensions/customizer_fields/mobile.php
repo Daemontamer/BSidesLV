@@ -120,6 +120,21 @@ Kirki::add_section( 'mobile_menu', array(
     'capability'        => 'edit_theme_options'
 ) );
 
+Kirki::add_field( 'ventcamp_theme_config', array(
+	'type'              => 'slider',
+	'settings'          => 'mobile_menu_height',
+	'label'             => __( 'Menu height', 'ventcamp' ),
+	'section'           => 'mobile_menu',
+	'default'           => 60,
+	'priority'          => 1,
+	'choices'           => array(
+		'min'               => 0,
+		'max'               => 250,
+		'step'              => 1
+	),
+	'transport'         => 'postMessage',
+	'less'              => 'mobile_menu_height'
+) );
 
 Kirki::add_field( 'ventcamp_theme_config', array(
     'type'              => 'checkbox',
@@ -127,7 +142,7 @@ Kirki::add_field( 'ventcamp_theme_config', array(
     'label'             => __( 'Hide logo', 'ventcamp' ),
     'section'           => 'mobile_menu',
     'default'           => 0,
-    'priority'          => 1,
+    'priority'          => 2,
     'transport'         => 'postMessage',
     'less'              => 'mobile_menu_hide_logo'
 ) );
@@ -139,7 +154,7 @@ Kirki::add_field( 'ventcamp_theme_config', array(
     'section'           => 'mobile_menu',
     'type'              => 'kirki-color',
     'default'           => '#262627',
-    'priority'          => 2,
+    'priority'          => 3,
     'transport'         => 'postMessage',
     'less'              => 'mobile_menu_text_color'
 ) );
@@ -154,7 +169,7 @@ Kirki::add_field( 'ventcamp_theme_config', array(
     'choices'           => array(
         'alpha'         => true
     ),
-    'priority'          => 3,
+    'priority'          => 4,
     'transport'         => 'postMessage',
     'less'              => 'mobile_menu_background_color'
 ) );

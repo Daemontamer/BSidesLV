@@ -2,6 +2,27 @@
     WooCommerce styling
 ---------------------------------------------------------------------------- */
 
+/* WooCommerce 3.0 Gallery */
+
+// Remove underline
+a.woocommerce-product-gallery__trigger {
+  text-decoration: none;
+}
+
+.single-product div.product .woocommerce-product-gallery {
+  // White circle in top right corner of product image
+  .woocommerce-product-gallery__trigger {
+    overflow: hidden;
+
+    // Colors on hover
+    &:hover {
+      background-color: @skin_accent_color;
+      border-color: @skin_accent_color;
+      color: #ffffff;
+    }
+  }
+}
+
 .woocommerce {
 
     h1, h2, h3, h4, h5 {
@@ -209,10 +230,6 @@
 
 .woocommerce,
 .woocommerce-page {
-    ul.products li.product {
-        width: 29.5%;
-    }
-
     .cart-collaterals .cart_totals {
         margin-top: 30px;
     }

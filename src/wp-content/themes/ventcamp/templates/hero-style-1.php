@@ -1,7 +1,7 @@
 <?php
 
 // Require hero style 3 class
-require_once THEME_DIR . "/extensions/hero/style-1.class.php";
+require_once get_template_directory() . "/extensions/hero/style-1.class.php";
 
 // Init an object of Hero class
 $hero = new Hero_Style_1();

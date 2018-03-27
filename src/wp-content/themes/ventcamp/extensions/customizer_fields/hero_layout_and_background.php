@@ -100,7 +100,8 @@ Kirki::add_field( 'ventcamp_theme_config', array(
     'choices'           => array(
         'controls'          => __( 'Add video controls', 'ventcamp' ),
         'mute'              => __( 'Mute video by default', 'ventcamp' ),
-        'autoplay'          => __( 'Play video automatically', 'ventcamp' )
+        'autoplay'          => __( 'Play video automatically', 'ventcamp' ),
+	    'loop'              => __( 'Play video in loop?', 'ventcamp' )
     ),
     'active_callback'   => 'ventcamp_hero_background_type_callback'
 ) );

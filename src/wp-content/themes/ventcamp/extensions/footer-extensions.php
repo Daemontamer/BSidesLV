@@ -23,6 +23,12 @@ if( !function_exists('ventcamp_enqueue_scripts') ) {
 
         // Load Main Theme Js script
         wp_enqueue_script( 'ventcamp-main',    get_template_directory_uri() . "/js/ventcamp.js", array('jquery'), false, true );
+        // Get inline script from settings
+	    $global_js = ventcamp_option( 'customcode_global_js', '' );
+	    // Attach custom inline script to 'ventcamp-main'
+	    if ( !empty( $global_js ) ) {
+		    wp_add_inline_script( 'ventcamp-main', $global_js );
+	    }
 
         // Load comment scripts if page has comments enabled
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -32,26 +38,6 @@ if( !function_exists('ventcamp_enqueue_scripts') ) {
     }
 }
 add_action( 'wp_enqueue_scripts', 'ventcamp_enqueue_scripts' );
-
-if ( !function_exists( 'add_custom_javascript_to_footer' ) ) {
-    /**
-     * If custom JavaScript is set in settings, then output it in theme footer.
-     */
-    function add_custom_javascript_to_footer () {
-        // Get JS code from settings
-        $global_js = trim( ventcamp_option( 'customcode_global_js' ) );
-
-        if ( !empty( $global_js ) ) : ?>
-            <script type='text/javascript'>
-                <?php echo $global_js; ?>
-            </script>
-            <?php
-        endif;
-    }
-
-    // Output script only after all script, in the end of the page
-    add_action( 'wp_footer', 'add_custom_javascript_to_footer', 9999 );
-}
 
 if ( !function_exists('ventcamp_localize_scripts') ) {
     /**

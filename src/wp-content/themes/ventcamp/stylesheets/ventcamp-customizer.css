@@ -44,3 +44,34 @@ div.vc-phone-preview iframe {
 div.vc-mobile-menu-preview iframe {
     max-width: 355px !important;
 }
+
+/*
+   Show color picker and "Default" buttons
+ */
+.wp-picker-container input[type="text"].wp-color-picker,
+.wp-customizer .wp-picker-input-wrap .button,
+.wp-picker-input-wrap .button {
+    display: inline-block !important;
+}
+
+/*
+    Styling of color fields
+ */
+.customize-control-color .wp-picker-container a.wp-color-result,
+.customize-control-kirki-color .wp-picker-container a.wp-color-result {
+    position: relative;
+    display: inline-block !important;
+    width: 50% !important;
+    padding: 0 !important;
+    height: 28px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+/*
+    Remove left border radius from color field
+ */
+.wp-picker-container input[type="text"].wp-color-picker {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

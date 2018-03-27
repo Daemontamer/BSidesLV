@@ -12,6 +12,43 @@ if ( VENTCAMP_LESS_COMPILE_DEBUG == true ){
     add_action( 'customize_save_after', 'ventcamp_less_compile', 99 );
 }
 
+if( !function_exists('ventcamp_custom_inline_styles') ) {
+	/**
+	 * Return a custom CSS code, defined in theme options.
+	 *
+	 * @return string Returns a custom CSS defined by user
+	 */
+	function ventcamp_custom_inline_styles() {
+		$global_css = ventcamp_option( 'customcode_global_css', '' );
+		$tablet_css = ventcamp_option( 'customcode_tablet_css', '' );
+		$phone_css  = ventcamp_option( 'customcode_phone_css', '' );
+
+		// If no custom code is defined, return
+		if ( empty( $global_css ) && empty( $tablet_css ) && empty( $phone_css ) ) {
+			return '';
+		}
+
+		// Add global CSS to output
+		$output = $global_css;
+
+		// If we have custom CSS code for tablets
+		if( !empty( $tablet_css ) ) {
+			$output .= '@media (max-width: 992px) {';
+			$output .=     $tablet_css;
+			$output .= '}';
+		}
+
+		// If we have custom CSS code for phones
+		if( !empty( $phone_css ) ) {
+			$output .= '@media (max-width: 767px) {';
+			$output .=     $phone_css;
+			$output .= '}';
+		}
+
+		return $output;
+	}
+}
+
 if( !function_exists('ventcamp_enqueue_styles') ) {
     /**
      * Enqueue Ventcamp styles
@@ -31,6 +68,9 @@ if( !function_exists('ventcamp_enqueue_styles') ) {
         // Set bootstrap and other styles as dependencies
         wp_register_style( 'ventcamp-style',THEME_URI . $style_path, array ( 'bootstrap', 'font-lineicons', 'toastr' ), $last_modification );
         wp_enqueue_style( 'ventcamp-style' );
+
+        // Add an inline CSS to 'ventcamp-style'
+	    wp_add_inline_style( 'ventcamp-style', ventcamp_custom_inline_styles() );
     }
 
     add_action('wp_enqueue_scripts', 'ventcamp_enqueue_styles', 50);
@@ -50,45 +90,6 @@ if( !function_exists('ventcamp_check_if_less_compiled') ) {
     }
 }
 add_action( 'wp_enqueue_scripts', 'ventcamp_check_if_less_compiled', 100, 0);
-
-if( !function_exists('ventcamp_append_head_styles') ) {
-    /**
-     * Include Custom CSS to header
-     */
-    function ventcamp_append_head_styles(){
-        $global_css = ventcamp_option('customcode_global_css');
-        $tablet_css = ventcamp_option('customcode_tablet_css');
-        $phone_css  = ventcamp_option('customcode_phone_css');
-
-        // If no custom code is defined, return
-        if ( empty( $global_css ) && empty( $tablet_css ) && empty( $phone_css ) ) {
-            return;
-        }
-
-        ?>
-            <style type='text/css'>
-                <?php
-                    if( !empty($global_css) ) {
-                        echo $global_css;
-                    }
-
-                    if( !empty($tablet_css) ) : ?>
-                        @media (max-width: 992px) {
-                            <?php echo $tablet_css; ?>
-                        }
-                    <?php endif;
-
-                    if( !empty($phone_css) ) : ?>
-                        @media (max-width: 767px) {
-                            <?php echo $phone_css; ?>
-                        }
-                    <?php endif;
-                ?>
-            </style>
-        <?php
-    }
-}
-add_action( 'wp_head', 'ventcamp_append_head_styles', 100, 0);
 
 if( !function_exists('ventcamp_hero_block') ) {
     /**

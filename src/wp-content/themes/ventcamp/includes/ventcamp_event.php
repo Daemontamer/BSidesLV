@@ -16,7 +16,18 @@ if( !function_exists('ventcamp_event_admin_schedule_init') ) {
 if( !function_exists('ventcamp_event_schedule_init') ) {
     function ventcamp_event_schedule_init() {  
 
-	$schedules = array('main' => 'Main schedule', 'custom_1' => 'Extra schedule 1','custom_2' => 'Extra schedule 2','custom_3' => 'Extra schedule 3','custom_4' => 'Extra schedule 4','custom_5' => 'Extra schedule 5');
+	$schedules = array(
+		'main' => 'Main schedule',
+		'custom_1' => __( 'Schedule 1', 'ventcamp' ),
+		'custom_2' => __( 'Schedule 2', 'ventcamp' ),
+		'custom_3' => __( 'Schedule 3', 'ventcamp' ),
+		'custom_4' => __( 'Schedule 4', 'ventcamp' ),
+		'custom_5' => __( 'Schedule 5', 'ventcamp' ),
+		'custom_6' => __( 'Schedule 6', 'ventcamp' ),
+		'custom_7' => __( 'Schedule 7', 'ventcamp' ),
+		'custom_8' => __( 'Schedule 8', 'ventcamp' ),
+		'custom_9' => __( 'Schedule 9', 'ventcamp' )
+	);
 
 	/* Event ACF */	 
 		if (isset($_GET['schedule'])){
@@ -215,6 +226,30 @@ if( !function_exists('ventcamp_event_schedule_init') ) {
 					          'readonly' => 0,
 					          'disabled' => 0,
 					        ),
+						    array (
+							  'key' => 'field_single_day_lecture_icon'.$key,
+							  'label' => __( 'Icon', 'ventcamp' ),
+							  'name' => 'icon',
+							  'type' => 'image',
+							  'instructions' => '',
+							  'required' => 0,
+							  'conditional_logic' => 0,
+							  'wrapper' => array (
+							    'width' => '',
+							    'class' => 'schedule_options '.$key,
+							    'id' => '',
+							  ),
+							  'return_format' => 'array',
+							  'preview_size' => '70x70',
+							  'library' => 'all',
+							  'min_width' => '',
+							  'min_height' => '',
+							  'min_size' => '',
+							  'max_width' => '',
+							  'max_height' => '',
+							  'max_size' => '',
+							  'mime_types' => '',
+						    ),
 					        array (
 					          'key' => 'field_single_day_lecture_info'.$key,
 					          'label' => __( 'Extra Info', 'ventcamp' ),
@@ -810,36 +845,59 @@ if( !function_exists('ventcamp_event_schedule_init') ) {
 }
 }
 
-if( !function_exists('ventcamp_admin_add_acf_tabs') ){
-	function ventcamp_admin_add_acf_tabs(){
-		if(isset($_GET['page']) && $_GET['page'] == 'vncp-event-options'){
-			if (isset($_GET['schedule'])){
-				$scheduleKey = $_GET['schedule'];
+if( !function_exists('ventcamp_admin_add_acf_tabs') ) {
+	/**
+	 * Inject tabs and CSS/JS scripts into schedule page.
+	 */
+	function ventcamp_admin_add_acf_tabs() {
+		// Only if we're on event schedule page
+		if ( isset( $_GET['page'] ) && $_GET['page'] == 'vncp-event-options' ) {
+			// Check if schedule key is set, otherwise set "main"
+			$scheduleKey = ( isset( $_GET['schedule'] ) && !empty( $_GET['schedule'] ) ) ? $_GET['schedule'] : 'main';
+
+			$output = '<style type="text/css">';
+			// Hide fields by default
+			$output .= '.schedule_options { display: none; }';
+			// Display current tab fields
+			if ( $scheduleKey == 'main' ) {
+				$output .= '.schedule_options:not([class*="_custom"]) { display: block !important; }';
 			} else {
-				$scheduleKey= '';
+				$output .= '.schedule_options._'.$scheduleKey .' { display: block !important; }';
 			}
+			$output .= '</style>';
 
+			// Inject tabs on top of the schedule page
+			$output .= "<script>jQuery(document).ready(function() { jQuery('#acf_tabs').prependTo('.acf-settings-wrap');} );</script>";
 
-			$custom_code = "<style>.schedule_options { display:none; } </style>";
+			// A list of tabs with schedules
+			$schedules = array(
+				'main' => __( 'Main schedule', 'ventcamp' ),
+				'custom_1' => __( 'Schedule 1', 'ventcamp' ),
+				'custom_2' => __( 'Schedule 2', 'ventcamp' ),
+				'custom_3' => __( 'Schedule 3', 'ventcamp' ),
+				'custom_4' => __( 'Schedule 4', 'ventcamp' ),
+				'custom_5' => __( 'Schedule 5', 'ventcamp' ),
+				'custom_6' => __( 'Schedule 6', 'ventcamp' ),
+				'custom_7' => __( 'Schedule 7', 'ventcamp' ),
+				'custom_8' => __( 'Schedule 8', 'ventcamp' ),
+				'custom_9' => __( 'Schedule 9', 'ventcamp' )
+			);
 
-			if( $scheduleKey == 'main' || $scheduleKey == ''){
-			$custom_code .= '<style>.schedule_options:not(._custom_1):not(._custom_2):not(._custom_3):not(._custom_4):not(._custom_5) { display:block !important; } </style>';} 
+			$output .= '<div id="acf_tabs" class="wrap">';
+			$output .=     '<h2 class="nav-tab-wrapper">';
 
-			$custom_code .= '<style>.schedule_options._'.$scheduleKey .' { display:block !important; } </style>';
+			// Loop through the all schedules
+			foreach( $schedules as $key => $value ) {
+				// Active tab class
+				$activeClass = ( $scheduleKey == $key ) ? 'nav-tab-active' : '';
+				// Add yet another tab to admin page
+				$output .= '<a href="?page=vncp-event-options&schedule=' . $key . '" class="nav-tab ' . $activeClass . '">'. $value .'</a>';
+			};
 
-			$custom_code .= "<script>jQuery(document).ready(function() {jQuery('#acf_tabs').prependTo('.acf-settings-wrap');});</script>";
-			
-			$schedules = array('main' => 'Main schedule', 'custom_1' => 'Extra schedule 1','custom_2' => 'Extra schedule 2','custom_3' => 'Extra schedule 3','custom_4' => 'Extra schedule 4','custom_5' => 'Extra schedule 5');
-		    $custom_code .=   '<div id="acf_tabs" class="wrap">';
-		    $custom_code .= '<h2 class="nav-tab-wrapper">';
-
-		  	foreach($schedules as $key => $val){
-		  			if ($scheduleKey != $key && $scheduleKey != ''){$style = 'style="color:#9b9797;"';} else {$style = 'style="color:#000;"';};
-		           $custom_code .= '<a ' . $style . ' href="?page=vncp-event-options&schedule=' . $key . '" class="nav-tab nav-tab-active">'. $val .'</a>';
-		    };
-		        $custom_code .="</h2></div>";
+			$output .=     '</h2>';
+			$output .= '</div>';
 		    
-		    echo $custom_code;
+			echo $output;
 		}
 	} 
 } 

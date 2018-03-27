@@ -8,7 +8,7 @@
  * @link http://vivaco.com
  * @copyright 2017 Vivaco
  * @package Ventcamp
- * @version 2.3
+ * @version 2.4.4
  *
  */
 defined('ABSPATH') or die('No direct access');
@@ -70,6 +70,11 @@ if( !function_exists('ventcamp_theme_setup') ) {
 			'quote',
 			'link',
 		) );
+
+		// Add slider and lightbox functionality to WooCommerce
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
 
 		add_image_size( '70x70', 70, 70, false );
 

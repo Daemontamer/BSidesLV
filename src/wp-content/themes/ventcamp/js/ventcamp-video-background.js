@@ -67,7 +67,7 @@ var VentcampVideoBackground;
 
                 if ( vid ) {
                     $div.css({
-                        'background-image': 'url("http://img.youtube.com/vi/' + vid + '/maxresdefault.jpg")',
+                        'background-image': 'url("https://img.youtube.com/vi/' + vid + '/maxresdefault.jpg")',
                         'background-size': 'cover',
                         '-webkit-background-size': 'cover'
                     });

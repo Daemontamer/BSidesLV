@@ -4,7 +4,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 // Require core Tags class
-require_once THEME_DIR . "/extensions/core/tag_generator.class.php";
+require_once get_template_directory() . "/extensions/core/tag_generator.class.php";
 
 // Don't duplicate this class
 if ( !class_exists( 'Video_Background' ) ) :
@@ -22,7 +22,8 @@ if ( !class_exists( 'Video_Background' ) ) :
         protected $default_args = array(
             "controls"    => "none",  // Add controls?
             "mute"        => false, // Mute video by default?
-            "autoplay"    => false  // Play video automatically?
+            "autoplay"    => false, // Play video automatically?
+	        "loop"        => false  // Play video in loop
         );
 
         /**
@@ -36,6 +37,7 @@ if ( !class_exists( 'Video_Background' ) ) :
                  ( isset( $args['containment'] ) && !empty( $args['containment'] ) ) ) {
                 // Default params for ytplayer, can be overridden later
                 $this->ytplayer_properties = array(
+	                "fitToBackground"   => true,
                     "realfullscreen"    => true,
                     "stopMovieOnBlur"   => false,
                     "addRaster"         => true,
@@ -72,6 +74,7 @@ if ( !class_exists( 'Video_Background' ) ) :
             $this->ytplayer_properties['videoURL']    = $this->video_settings['url'];
             $this->ytplayer_properties['mute']        = $this->video_settings['mute'];
             $this->ytplayer_properties['autoPlay']    = $this->video_settings['autoplay'];
+	        $this->ytplayer_properties['loop']        = $this->video_settings['loop'];
 
             /*
              * Generate JSON-formatted list of properties with unescaped slashes

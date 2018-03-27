@@ -66,41 +66,28 @@ section.error-404.not-found {
     color:#3A3939;
 }
 
+.blog,
 .page,
 .archive,
-.search {
-    .sidebar-right,
-    .sidebar-left {
-        padding: 50px 0;
-    }
-}
-
+.search,
 .single {
-    .content,
-    .sidebar-right,
-    .sidebar-left {
-        padding: 50px 0;
-    }
+  // Add paddings to top and bottom
+  .content,
+  .sidebar {
+    padding: 50px 0;
+  }
 
-    .content {
-        padding-right: 25px;
-    }
-}
+  // Remove button margin
+  .btn,
+  .btn-alt {
+    margin: 0;
+  }
 
-.blog {
-    .content {
-        padding: 50px;
-    }
-
-    .sidebar-right,
-    .sidebar-left {
-        padding: 50px 0 50px 0;
-    }
-
-    .btn,
-    .btn-alt {
-        margin: 0;
-    }
+  // Remove margin-top
+  .page-header,
+  .page-header .page-title {
+    margin-top: 0;
+  }
 }
 
 .post {
@@ -224,29 +211,26 @@ section.error-404.not-found {
         }
     }
 	
-.post,
-.page {
-  .entry-content {
+.entry-content {
+  ul {
+    list-style-type: square;
+    margin: 16px 0;
+    padding: 0 0 0 40px;
+
     ul {
-      list-style-type: square;
-      margin: 16px 0;
-      padding: 0 0 0 40px;
-
-      ul {
-        margin: 0;
-      }
-    }
-
-    ol {
-      list-style-type: decimal;
-      margin: 16px 0;
-      padding: 0 0 0 40px;
-
-      ol {
-        margin: 0;
-      }
+      margin: 0;
     }
   }
+
+  ol {
+    list-style-type: decimal;
+    margin: 16px 0;
+    padding: 0 0 0 40px;
+
+    ol {
+      margin: 0;
+    }
+    }
 }
 
 
@@ -459,6 +443,11 @@ section.error-404.not-found {
     font-weight: 400;
 }
 
+// Make page title small
+.page-header .page-title {
+  font-size: 21px;
+}
+
 .entry-navigation {
   border-top: 1px solid #d1d1d1;
   border-bottom: 1px solid #d1d1d1;
@@ -580,8 +569,7 @@ section.error-404.not-found {
   .blog,
   .single {
     // Fix sidebar's padding
-    .sidebar-left,
-    .sidebar-right {
+    .sidebar {
       padding: 0 15px;
     }
   }
@@ -594,8 +582,7 @@ section.error-404.not-found {
     }
 
     // Paddings for sidebar
-    .sidebar-right,
-    .sidebar-left {
+    .sidebar {
       padding-top: 30px;
       padding-bottom: 30px;
     }

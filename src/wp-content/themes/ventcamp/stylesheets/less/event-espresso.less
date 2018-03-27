@@ -1,117 +1,254 @@
 /* ----------------------------------------------------------------------------
     EventEspresso styling
 ---------------------------------------------------------------------------- */
-/* TO REFACTOR */
 
-.event-header h2.entry-title {font-size:30px;}
-.ee-event-img {width:100%;}
 .eespresso-container {
+  padding-bottom: 50px;
 
-  &.container {max-width:960px; padding-top:0px;}
+  .entry-title a {
+    color: @gray-darker;
 
-  .entry-title a {color:@gray-darker;}
+    &:hover{
+      text-decoration: none;
+      opacity: 0.9;
+    }
+  }
 
+  .nav-current {margin-top:10px;}
 
-  .pseudo-select .pseudo-select-field, .nav-current {margin-top:10px;}
-  h1 {font-size:50px;}
-  h3 {font-size:25px; text-transform: uppercase; line-height: 1.7; letter-spacing: 0.2em; color: @gray-darker; font-weight: 700;}
-  h4 {font-size:18px; font-weight:300; text-transform: uppercase; line-height: 1.7; letter-spacing: 0.2em; color: @gray-darker; font-weight: 700;}
+  h1 {
+    font-size: 50px;
+    margin-bottom: 0;
+  }
 
-  h1 a:hover{text-decoration:none; opacity:0.9;}
+  h2 {
+    font-size: 30px;
+  }
 
-
+  h3 {
+    font-size: 25px;
+    letter-spacing: 0;
+  }
 }
 
-.eespresso .ee-event-img-dv { height: 420px; overflow:hidden;}
-.eespresso .ee-event-img-dv img { height: auto;top: 50%;position: relative;transform: translate(0,-50%);}
+.tiny-text {
+  font-size: .7em;
+  line-height: 1.1em;
+  letter-spacing: 0.45px;
+}
 
-.tckt-slctr-tkt-details-sctn h3 {display:none;}
+.eespresso {
+  .ee-event-img-dv {
+    height: 420px;
+    overflow: hidden;
 
-.section-heading.display-box-heading {font-size:25px; text-transform: uppercase; line-height: 1.7; letter-spacing:0.2em; color: @gray-darker; font-weight: 700;}
+    img {
+      height: auto;
+      top: 50%;
+      position: relative;
+      transform: translate(0,-50%);
+    }
+  }
+}
 
-#espresso-thank-you-page-transaction-details-dv .ee-table {border-width:1px;}
+#ee-single-page-checkout-dv .section-title {
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 700;
+}
 
-.ee-button-lnk.inline-button.ee-invoice-lnk { padding: 20px 25px 18px; color: @skin_accent_color; background-color: rgba(255, 255, 255, 0); border-width: 1px; border-color: @skin_accent_color; border-radius: 4px;}
+.section-heading.display-box-heading {
+  font-size: 25px;
+  text-transform: uppercase;
+  line-height: 1.7;
+  letter-spacing: 0.2em;
+  color: @gray-darker;
+  font-weight: 700;
+}
 
-.spco-steps-pg {margin-bottom:40px;}
-.spco-step-display-dv.active-step span {color:red;}
+#a .ee-table {border-width:1px;}
 
-.spco-ticket-info-dv h5 {font-size:15px;     text-transform: uppercase; line-height: 1.7; letter-spacing:0.2em; opacity:0.5; font-weight: 700; margin-top:-10px; margin-bottom:20px;}
+.ee-button-lnk.inline-button.ee-invoice-lnk {
+  padding: 20px 25px 18px;
+  color: @skin_accent_color;
+  background-color: rgba(255, 255, 255, 0);
+  border-width: 1px;
+  border-color: @skin_accent_color;
+  border-radius: 4px;
+}
 
-.tiny-text { font-size: .7em; line-height: 1.1em; letter-spacing: 0.45px;}
+// Highlight the active step
+.spco-step-display-dv.active-step span {
+  color:red;
+}
+
+.spco-ticket-info-dv h5 {
+  font-size: 15px;
+  text-transform: uppercase;
+  line-height: 1.7;
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+  font-weight: 700;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
 
 .ee-attention {border: 4px solid @skin_accent_color;}
-p span.small-text {font-size:15px;}
-
-.espresso-venue-dv {text-align:center; margin-top:50px;}
-.espresso-venue-dv h4 {margin-bottom:0; letter-spacing: 0em;}.espresso-venue-dv p, .venue-content p, .venue-location .small-text  {margin:0; line-height:25px; font-size:15px;}
-.espresso-venue-dv div[itemprop="address"], .venue-location div[itemprop="address"] { display: inline;}
-
-.event-venues-h3,
-.venue-address-h3 {display:none;}
 
 #venue-details-h1 {margin-bottom:0;}
-.venue-content .ee-event-h3, .venue-location .ee-venue-h3 {margin-top:30px; margin-bottom:0px;}
-.venue-location .venue-gmap { margin-top:20px;}
+
+.venue-content .ee-event-h3,
+.venue-location .ee-venue-h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.venue-location .venue-gmap {
+  margin-top: 20px;
+}
+
 .ee-gmap-wrapper, .ee-gmap {width:100% !important;}
 
-.espresso-venue-dv h3 {    margin-bottom: 5px; margin-top: 20px;}
-.espresso-venue-dv p {margin-bottom:0px;}
+.powered-by-event-espresso-credit {
+  margin-top: -30px;
+}
 
-.espresso-venue-details {padding-bottom:50px;}
-.venue-details-h1,
-.venue-location {text-align:center;}
+.ee-spinner { color: @skin_accent_color; }
 
-.powered-by-event-espresso-credit {margin-top:-30px;}
+.ee-button {
+  // Change background color
+  &,
+  &:active,
+  &:hover,
+  &:visited {
+    background: @skin_accent_color;
+  }
 
-.ee-spinner {color:@skin_accent_color;}
-.ee-button, .ee-button:active, .ee-button:visited {background:@skin_accent_color;}
-.ee-button:hover {background:@skin_accent_color; opacity:0.9;}
-.ckt-slctr-tbl-tr td {border-width:1px 1px 1px 1px; border-bottom:1px solid @gray-lighter;}
+  // Add opacity on hover
+  &:hover {
+    opacity: 0.9;
+  }
+}
 
-.tckt-slctr-tkt-details-sctn h3 {font-size:20px;}
-.tckt-slctr-tkt-details-sctn h5 {font-size:15px; text-transform: uppercase; line-height: 1.7; letter-spacing:0.2em; opacity:0.; font-weight: 700;}
+/*
+  Ticket details section on ticket page
+ */
+.tckt-slctr-tkt-details-sctn {
+  // Don't show "Details" heading
+  h3 {
+    display: none;
+  }
 
-.tkt-slctr-tbl .small-text, .tkt-slctr-tbl .smaller-text {font-size:13px;}
+  // Small headings such as "Sale Dates", "Access" and so on
+  h5 {
+    font-size: 15px;
+    text-transform: uppercase;
+    line-height: 1.7;
+    letter-spacing: 0.2em;
+    opacity: 0.9;
+    font-weight: 700;
+  }
+}
 
-.tckt-slctr-tbl-td-name, .tckt-slctr-tbl-td-price jst-rght {  border-bottom:1px solid @gray-lighter;}
+// Text in ticket selector table
+.tkt-slctr-tbl {
+  .small-text,
+  .smaller-text {
+    font-size: 13px;
+  }
+}
 
-.tckt-slctr-tbl-td-price {text-align: center;}
-.tkt-slctr-tbl-wrap-dv {margin-bottom:-10px;}
+// Align ticket price by center
+.tckt-slctr-tbl-td-price {
+  text-align: center;
+}
+
+// Change appearance of the button
 .ticket-selector-submit-btn,
-.spco-next-step-btn {padding: 10px 20px 10px; color: @white; background-color: @skin_accent_color; border-width: 0px; border-color: rgba(255, 255, 255, 0); border-radius: 4px;}
+.spco-next-step-btn {
+  padding: 10px 20px 10px;
+  color: @white;
+  background-color: @skin_accent_color;
+  border-width: 0;
+  border-color: rgba(255, 255, 255, 0);
+  border-radius: 4px;
+}
 
-.tkt-slctr-tbl-wrap-dv {margin-top:50px;}
 .ticket-selector-submit-btn,
-.spco-next-step-btn {text-transform:uppercase; padding: 13px 19px 12px; font-family: "PT Sans Caption", Roboto !important;
-    font-size: 11px;
-    font-weight: 700; letter-spacing: 0.59em;}
+.spco-next-step-btn {
+  text-transform: uppercase;
+  padding: 13px 19px 12px;
+  font-family: "PT Sans Caption", Roboto !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.59em;
+}
 
-.spco-steps-big-hdr {display:none;}
-
-#ee-single-page-checkout-dv,
-#espresso-thank-you-page-overview-dv {margin-top:50px;}
-
-#spco-steps-display-dv {padding-top: 10px;}
-.spco-step-dv {margin-bottom:10px;}
+.spco-step-dv { margin-bottom: 10px; }
 
 /* VC Integration styles */
 
-.tckt-slctr-tkt-details-sctn h3 {display:none;}
-.vc-events-list h1 {font-size:50px;}
-.vc-events-list .page-header {border-bottom:0px solid @gray-lighter;}
-.vc-events-list article.espresso_events {max-width:320px; float:left; display:block; height:415px; padding:0px 10px; border:1px solid @gray-lighter; margin:0px 10px;}
-.vc-events-list article.espresso_events:hover {border:1px solid @skin_accent_color;}
-.vc-events-list .espresso-event-list-wrapper-dv p {display:none;}
-.vc-events-list .event-header h2 {font-size:16px; font-weight:300; text-transform: uppercase; line-height: 1.7; letter-spacing: 0.1em; font-weight: 700; margin:0px 0px 0px 0px;}
+.vc-events-list {
+  h1 {
+    font-size: 50px;
+  }
 
-.vc-events-list .event-header h2 a:hover {text-decoration:none; opacity:0.9;}
+  .page-header {
+    border-bottom: 0px solid @gray-lighter;
+  }
 
-.vc-events-list .ee-event-img {min-height:223px;}
-.vc-events-list .event-datetimes li { width:100%;}
-.vc-events-list .download-iCal-frm {margin:0;}
-.vc-events-list .event-datetimes .ee-ical-sbmt {background: transparent;border: 0;color: @skin_accent_color;}
+  article {
+    &.espresso_events {
+      max-width: 320px;
+      float: left;
+      display: block;
+      height: 415px;
+      padding: 0 10px;
+      border: 1px solid @gray-lighter;
+      margin: 0 10px;
 
-.vc-events-list .event-content {width: 100%; display: table;}
-.vc-events-list .event-content form:not(.download-iCal-frm) {display:table-footer-group; width:100%;}
-.vc-events-list .event-content .view-details-btn {width: 100%;}
+      &:hover {
+        border: 1px solid @skin_accent_color;
+      }
+    }
+
+    .event-header {
+      h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+        line-height: 1.7;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        margin: 0;
+
+        // Remove default link behavior
+        a:hover {
+          text-decoration: none;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  .event-content {
+    width: 100%;
+    display: table;
+
+    form:not(.download-iCal-frm) {
+      display: table-footer-group;
+      width: 100%;
+    }
+
+    .view-details-btn {
+      width: 100%;
+    }
+  }
+
+  .espresso-event-list-wrapper-dv p {display:none;}
+
+  .ee-event-img {min-height:223px;}
+  .event-datetimes li { width:100%;}
+  .download-iCal-frm {margin:0;}
+  .event-datetimes .ee-ical-sbmt {background: transparent;border: 0;color: @skin_accent_color;}
+}
+

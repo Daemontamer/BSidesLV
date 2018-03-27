@@ -5,7 +5,7 @@
 * Ventcamp - Event and Conference Theme
 * Vivaco
 * http://vivaco.com
-* Version: 1.0
+* Version: 2.4.2
 */
 
 This WordPress theme consists of two parts:

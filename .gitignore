@@ -1,3 +1,4 @@
+*.DS_STORE
 *.log
 src/wp-content/advanced-cache.php
 src/wp-content/backup-db/
